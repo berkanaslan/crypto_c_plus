@@ -1,7 +1,5 @@
-import 'package:crypto_c_plus/bloc/coins/coins_bloc.dart';
 import 'package:crypto_c_plus/widgets/single_coin_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BodySearchWidget extends StatelessWidget {
   @override
@@ -23,7 +21,8 @@ class BodySearchWidget extends StatelessWidget {
                 enabledBorder: InputBorder.none,
                 errorBorder: InputBorder.none,
                 disabledBorder: InputBorder.none,
-                contentPadding: EdgeInsets.only(left: 15, bottom: 15, top: 15, right: 15),
+                contentPadding:
+                    EdgeInsets.only(left: 15, bottom: 15, top: 15, right: 15),
                 hintText: "Search",
                 suffixIcon: IconButton(
                   icon: Icon(
@@ -33,9 +32,7 @@ class BodySearchWidget extends StatelessWidget {
                   ),
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
-                  onPressed: () {
-                    BlocProvider.of<CoinsBloc>(context).add(GetSingleCoins(coinName: "Bitcoin"));
-                  },
+                  onPressed: () {},
                 )),
           ),
         ),

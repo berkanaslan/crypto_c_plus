@@ -1,8 +1,9 @@
-import 'package:crypto_c_plus/bloc/coins/bottom_navigation_bar/bottom_navigation_bar_bloc.dart';
+import 'file:///D:/Dosyalar/Repositories/Flutter/crypto_c_plus/crypto_c_plus/lib/widgets/pages/home_page.dart';
+import 'file:///D:/Dosyalar/Repositories/Flutter/crypto_c_plus/crypto_c_plus/lib/widgets/pages/info_page.dart';
+import 'package:crypto_c_plus/widgets/my_custom_botttom_nav_bar.dart';
+import 'package:crypto_c_plus/widgets/pages/favorites_page.dart';
+import 'package:crypto_c_plus/widgets/tab_items.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'body.dart';
 
 class CryptoCPlus extends StatefulWidget {
   @override
@@ -10,6 +11,16 @@ class CryptoCPlus extends StatefulWidget {
 }
 
 class _CryptoCPlusState extends State<CryptoCPlus> {
+  TabItem _currentTab = TabItem.Home;
+
+  Map<TabItem, Widget> allPages() {
+    return {
+      TabItem.Home: HomePage(),
+      TabItem.Favorites: FavoritesPage(),
+      TabItem.Info: InfoPage(),
+    };
+  }
+
   @override
   void initState() {
     super.initState();
@@ -17,37 +28,17 @@ class _CryptoCPlusState extends State<CryptoCPlus> {
 
   @override
   Widget build(BuildContext context) {
-    final _navigationBloc = BlocProvider.of<BottomNavigationBarBloc>(context);
-    _navigationBloc.add(GetBottomNavigationBar());
-    return BlocBuilder(
-      cubit: _navigationBloc,
-      builder: (context, state) {
-        if (state is BottomNavigationBarInitial) {
-          return CircularProgressIndicator();
-        } else if (state is BottomNavigationBarLoadedState) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text("CryptoC+"),
-              elevation: 0,
-              actions: [
-                IconButton(
-                  icon: Icon(Icons.star_border),
-                  onPressed: () {},
-                )
-              ],
-            ),
-            drawer: Drawer(),
-            floatingActionButton: state.floatingActionButton,
-            floatingActionButtonLocation: state.floatingActionButtonLocation,
-            bottomNavigationBar: state.bottomNavigationBar,
-            body: BodyWidget(),
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+    return Container(
+      child: MyCustomBottomNavigationBar(
+        currentTab: _currentTab,
+        pageCreator: allPages(),
+        onSelectedTab: (selectedTab) {
+          setState(() {
+            _currentTab = selectedTab;
+          });
+          debugPrint("Seçilen tab: " + _currentTab.toString());
+        },
+      ),
     );
   }
 }

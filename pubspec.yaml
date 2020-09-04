@@ -28,14 +28,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
-  flutter_bloc: ^6.0.1
-  equatable: ^1.2.3
+
   get_it: ^4.0.4
   http: ^0.12.2
-  animated_bottom_navigation_bar:
-    git:
-      url: git://github.com/berkanaslan/animated-bottom-navigation-bar-flutter
-      ref: master
   intl: ^0.16.1
 
 
