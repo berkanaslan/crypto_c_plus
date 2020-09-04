@@ -5,7 +5,7 @@ CryptoC+, more than 120 Cryptocurrencies.
 Bu proje, [bağlantıda](https://github.com/berkanaslan/FlutterCryptoCurrencies) bulunan repository'nin, bloc yapısı kullanılarak modifiye edilmiş halidir.
 ## Yeni olarak kullanıldı?
 1. 100'den fazla kriptokoin bilgisi içeren api kaynağı,
-2. 2 adet bloc pattern (alt navigasyon ve koinler için)
+2. 2 adet bloc pattern (alt navigasyon ve koinler için) (geri çıkarıldı)
 3. Koin görselleri tamamlandı,
 4. Api client ve repository katmanlaması ve daha fazlası.
 
